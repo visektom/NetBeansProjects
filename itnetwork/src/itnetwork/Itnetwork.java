@@ -82,20 +82,20 @@ public class Itnetwork {
 //        System.out.println("");
 //        rdkBart.vypis();
 //      Trida DegToRad
-//        DegToRad.vypis();
+//        DegToRad.vypis    ();
 //      Trida Factory, Cukrovi
-        System.out.println(Factory.bananove());
-        System.out.println(Factory.bananove());
-        System.out.println(Factory.bananove());
-        System.out.println(Factory.bananove());
-        System.out.println(Factory.jahodove());
-        System.out.println(Factory.jahodove());
-        System.out.println(Factory.jahodove());
-        System.out.println(Factory.cokoladove());
-        System.out.println(Factory.cokoladove());
+//        System.out.println(Factory.bananove());
+//        System.out.println(Factory.bananove());
+//        System.out.println(Factory.bananove());
+//        System.out.println(Factory.bananove());
+//        System.out.println(Factory.jahodove());
+//        System.out.println(Factory.jahodove());
+//        System.out.println(Factory.jahodove());
+//        System.out.println(Factory.cokoladove());
+//        System.out.println(Factory.cokoladove());
 //      Trida Singleton, Databaze
-//        Databaze db = Databaze.getInstance();
-//        System.out.println(db);
-//        System.out.println(db.getNazev());
+        Databaze db = Databaze.getInstance();
+        System.out.println(db);
+        System.out.println(db.getNazev());
     }
 }

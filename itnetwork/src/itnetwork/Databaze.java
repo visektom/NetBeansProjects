@@ -28,6 +28,7 @@ public class Databaze {
         return db;
     }
     
+    @Override
     public String toString() {
         return String.format("%s", getNazev());
     }
