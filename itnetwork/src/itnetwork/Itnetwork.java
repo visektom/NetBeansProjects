@@ -5,6 +5,8 @@
  */
 package itnetwork;
 import java.util.Scanner;
+import java.sql.*;
+import java.nio.charset.*;
 
 /**
  *
@@ -15,7 +17,7 @@ public class Itnetwork {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) implements Connection {
         //Trida Clovek
 //        Clovek typek = new Clovek("Karel Varel");
 //        System.out.println(typek.getJmeno()+" ("+typek.getUnava()+")");
@@ -94,8 +96,40 @@ public class Itnetwork {
 //        System.out.println(Factory.cokoladove());
 //        System.out.println(Factory.cokoladove());
 //      Trida Singleton, Databaze
-        Databaze db = Databaze.getInstance();
-        System.out.println(db);
-        System.out.println(db.getNazev());
+//        Databaze db = Databaze.getInstance();
+//        System.out.println(db);
+//        System.out.println(db.getNazev());
+        
+//        try (Connection spojeni = DriverManager.getConnection("jdbc:mysql://localhost:3306/slovnicek_db?user=root&password=root");
+//        PreparedStatement dotaz = spojeni.prepareStatement("SELECT * FROM slovo");
+//        ResultSet vysledky = dotaz.executeQuery();) {
+//
+//        while (vysledky.next()) {
+//                int id = vysledky.getInt("id");
+//                String cesky = vysledky.getString("cesky");
+//                String anglicky = vysledky.getString("anglicky");
+//                System.out.println("Id: " + id + ", česky: " + cesky + ", anglicky: " + anglicky);
+//        }
+//
+//        } catch (SQLException ex) {
+//            System.out.println("Chyba při komunikaci s databází");
+//        }
+//    }
+        
+        Scanner sc = new Scanner(System.in, "UTF-8");
+        System.out.println("Zadej anglické slovíčko k překladu:");
+        String anglicky = sc.nextLine();
+        
+        try (Connection spojeni = DriverManager.getConnection("jdbc:mysql://localhost:3306/slovnicek_db?user=root&password=root");
+        PreparedStatement dotaz = spojeni.prepareStatement("SELECT cesky FROM slovo WHERE anglicky=?");) {
+        dotaz.setString(1, anglicky);
+            try(ResultSet vysledky = dotaz.executeQuery()){
+                vysledky.next();
+                String cesky = vysledky.getString("cesky");
+                System.out.println("Překlad " + anglicky + ": " + cesky);
+            }            
+        } catch (SQLException ex) {
+            System.out.println("Chyba při komunikaci s databází");
+        }
     }
 }

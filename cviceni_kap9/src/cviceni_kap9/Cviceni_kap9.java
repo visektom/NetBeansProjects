@@ -130,6 +130,14 @@ public class Cviceni_kap9 extends Object {
             System.out.println("1");
         else
             System.out.println("0");
+        int[] pole = new int[4];
+//        int[] pole = {1, 2, 3, 4, 5};
+//        pole = new int[5];
+//        pole = {1, 2, 3, 4, 5};
+        System.out.println(""+pole.length);
+        for(int k = 0; k<pole.length; k++) {
+            System.out.println(pole[i]);
+        }
     }
     
 }

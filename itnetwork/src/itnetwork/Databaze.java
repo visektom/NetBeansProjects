@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package itnetwork;
+import java.sql.*;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Databaze {
     
     public static Databaze getInstance() {
         if(db == null) {
-            db = new Databaze("MySQL", "alois", "hesloVeslo");
+            db = new Databaze("MySQL", "root", "root");
         }
         return db;
     }

@@ -10,7 +10,7 @@ package itnetwork;
  * @author duck
  */
 public class Singleton {
-//    Databaze db1 = new Databaze("db1", "alois", "hesloVeslo"); 
+
     Databaze db = Databaze.getInstance();
-//    System.out.println(db);
+
 }
